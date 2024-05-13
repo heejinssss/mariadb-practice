@@ -17,8 +17,8 @@ ORDER BY HIRE_DATE;
 
 -- 문제3.
 -- 여직원과 남직원은 각 각 몇 명이나 있나요?
-SELECT COUNT(*) AS '남직원 수' FROM employees WHERE GENDER = 'M';
-SELECT COUNT(*) AS '남직원 수' FROM employees WHERE GENDER = 'F';
+SELECT (SELECT COUNT(*) FROM employees WHERE GENDER = 'M') AS '남직원',
+       (SELECT COUNT(*) FROM employees WHERE GENDER = 'F') AS '여직원';
 
 -- 문제4.
 -- 현재 근무하고 있는 직원 수는 몇 명입니까? (salaries 테이블을 사용합니다.) 
@@ -32,11 +32,8 @@ SELECT COUNT(*) AS '현재 근무하고 있는 직원 수' FROM salaries WHERE T
 SELECT COUNT(*) AS '부서 개수' FROM departments;
 
 -- 문제6.
--- 현재 부서 매니저는 몇 명이나 있나요? (역임 매너저는 제외)
--- sol 1
-SELECT COUNT(*) AS '현재 부서 매니저 인원' FROM dept_manager WHERE TO_DATE > TO_CHAR(NOW(), 'yyyy-mm-dd');
--- sol 2
-SELECT COUNT(*) AS '현재 부서 매니저 인원' FROM dept_manager WHERE TO_DATE = '9999-01-01';
+-- 부서 매니저는 몇 명이나 있나요? (역임 매너저는 제외)
+SELECT COUNT(DISTINCT EMP_NO) AS '부서 매니저 인원' FROM dept_manager;
 
 -- 문제7.
 -- 전체 부서를 출력하려고 합니다. 순서는 부서이름이 긴 순서대로 출력해 보세요.
