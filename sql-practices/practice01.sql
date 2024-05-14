@@ -1,6 +1,5 @@
 -- 기본 SQL 문제입니다.
 
-SELECT * FROM employees;
 -- 문제1.
 -- 사번이 10944인 사원의 이름은(전체 이름)
 SELECT CONCAT(FIRST_NAME, " ", LAST_NAME) AS '사번이 10944인 사원의 이름'
