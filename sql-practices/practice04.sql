@@ -34,22 +34,21 @@ order by t.salary desc;
 
 -- 문제3.
 -- 현재, 자신의 부서 평균 급여보다 연봉(salary)이 많은 사원의 사번, 이름과 연봉을 조회하세요.
-  select e.emp_no, concat(e.first_name, " ", e.last_name) as name, s.salary
-    from employees e, salaries s, dept_emp de, departments d,
-	     (  select de.dept_no as dept_no, avg(s.salary) as avg_salary -- 현재 기준, 부서별 평균 급여 테이블 출력하는 서브쿼리 생성
-	  		  from salaries s, dept_emp de
-             where s.emp_no = de.emp_no
-               and s.to_date like '9999%'
-               and de.to_date like '9999%'
-          group by de.dept_no) t
-   where e.emp_no = s.emp_no
-     and s.emp_no = de.emp_no
-	 and de.dept_no = d.dept_no
-     and d.dept_no = t.dept_no
-     and s.to_date like '9999%'
-     and de.to_date like '9999%'
-     and s.salary > t.avg_salary
-order by name;
+select e.emp_no, first_name as name, s.salary
+  from employees e, salaries s, dept_emp de, departments d,
+	   (  select de.dept_no as dept_no, avg(s.salary) as avg_salary -- 현재 기준, 부서별 평균 급여 테이블 출력하는 서브쿼리 생성
+	  	    from salaries s, dept_emp de
+	  	   where s.emp_no = de.emp_no
+	  	     and s.to_date like '9999%'
+	  	     and de.to_date like '9999%'
+	    group by de.dept_no) t
+ where e.emp_no = s.emp_no
+   and s.emp_no = de.emp_no
+   and de.dept_no = d.dept_no
+   and d.dept_no = t.dept_no
+   and s.to_date like '9999%'
+   and de.to_date like '9999%'
+   and s.salary > t.avg_salary;
 
 -- 문제4.
 -- 현재, 사원들의 사번, 이름, 사원 담당 매니저 이름, 부서 이름으로 출력해 보세요.
@@ -75,16 +74,16 @@ select e.emp_no as '사번',
 
 -- 문제5.
 -- 현재, 평균연봉이 가장 높은 부서의 사원들의 사번, 이름, 직책, 연봉을 조회하고 연봉 순으로 출력하세요.
- select e.emp_no as '사번', concat(e.first_name, " ", e.last_name) as '이름', t.title as '직책', s.salary as '연봉'
+ select e.emp_no as '사번', first_name as '이름', t.title as '직책', s.salary as '연봉'
    from employees e, titles t, salaries s, dept_emp de,
         ( select de.dept_no as dept_no, avg(s.salary) as salary
            from salaries s, dept_emp de
           where s.emp_no = de.emp_no
             and s.to_date like '9999%'
             and de.to_date like '9999%'
-         group by de.dept_no
-        order by salary
-        limit 1) b
+       group by de.dept_no
+       order by salary desc -- 내림차순
+           limit 1) b
    where e.emp_no = s.emp_no
      and s.emp_no = t.emp_no
      and t.emp_no = de.emp_no
@@ -104,7 +103,7 @@ order by s.salary;
      and de.to_date like '9999%'
 group by d.dept_name
 order by avg(s.salary) desc
-limit 1;
+    limit 1;
 
 -- 문제7.
 -- 평균 연봉이 가장 높은 직책?
@@ -115,7 +114,7 @@ limit 1;
      and t.to_date like '9999%'
 group by t.title
 order by avg(s.salary) desc
-limit 1;
+   limit 1;
 
 -- 문제8.
 -- 현재 자신의 매니저보다 높은 연봉을 받고 있는 직원은?
