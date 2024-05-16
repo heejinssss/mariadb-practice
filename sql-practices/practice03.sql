@@ -16,28 +16,27 @@ order by e.last_name;
 
 -- 문제3.
 -- 전체 사원의 사번, 이름, 현재 부서를 이름 순서로 출력하세요..
-select e.emp_no as '사번', e.last_name as '이름', d.dept_name as '부서'
-  from employees e join dept_emp de on e.emp_no = de.emp_no
-                   join departments d on de.dept_no = d.dept_no
-  where de.to_date like '9999%'
-  order by e.last_name;
+  select e.emp_no as '사번', e.last_name as '이름', d.dept_name as '부서'
+    from employees e join dept_emp de on e.emp_no = de.emp_no
+                     join departments d on de.dept_no = d.dept_no
+   where de.to_date like '9999%'
+order by e.last_name;
 
 -- 문제4.
 -- 현재 사원의 사번, 이름, 연봉, 직책, 부서를 모두 이름 순서로 출력합니다. -- 연봉이 시기마다 다를 경우에는?
-select count(*)
--- select e.emp_no as '사번',
---        concat(e.first_name, " ", e.last_name) as '이름',
---        s.salary as '연봉',
---        t.title as '직책',
---        d.dept_name as '부서'
-  from employees e join salaries s on e.emp_no = s.emp_no
-				   join titles t on s.emp_no = t.emp_no
-                   join dept_emp de on t.emp_no = de.emp_no
-                   join departments d on de.dept_no = d.dept_no
-  where s.to_date like '9999%'
-    and t.to_date like '9999%'
-    and de.to_date like '9999%'
-  order by '이름';
+ select e.emp_no as '사번',
+        concat(e.first_name, " ", e.last_name) as '이름',
+        s.salary as '연봉',
+        t.title as '직책',
+        d.dept_name as '부서'
+   from employees e join salaries s on e.emp_no = s.emp_no
+				    join titles t on s.emp_no = t.emp_no
+                    join dept_emp de on t.emp_no = de.emp_no
+                    join departments d on de.dept_no = d.dept_no
+   where s.to_date like '9999%'
+     and t.to_date like '9999%'
+     and de.to_date like '9999%'
+order by '이름';
 
 -- 문제5.
 -- 'Technique Leader'의 직책으로 과거에 근무한 적이 있는 모든 사원의 사번과 이름을 출력하세요.
@@ -77,7 +76,7 @@ select concat(e.first_name, " ", e.last_name) as '이름', d.dept_name as '부�
    where s.to_date like '9999%'
      and t.to_date like '9999%'
 group by t.title
-having avg(s.salary) >= 50000
+  having avg(s.salary) >= 50000
 order by avg(s.salary) desc;
 
 -- 문제9.
