@@ -62,6 +62,7 @@ public class EmaillistApp {
 
 	private static void doList() {
 		List<EmaillistVo> result = dao.findAll();
+		System.out.println();
         System.out.println("▐░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▌");
         for (EmaillistVo vo : result) {
             System.out.println(" [" + vo.getNo() + "] " + vo.getFirstName() + " " + vo.getLastName() + " (" + vo.getEmail() + ")");
@@ -90,6 +91,7 @@ public class EmaillistApp {
 	}
 
 	private static void welcomeMessage(String name) {
+		System.out.println();
 		System.out.println("。　♡ 。　　♡。　　♡\r\n"
 				+ "♡。　＼　　｜　　／。　♡\r\n"
 				+ "　 "+name+"님! 환영합니다!\r\n"
