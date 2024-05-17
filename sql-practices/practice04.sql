@@ -108,7 +108,7 @@ order by avg(s.salary) desc
 -- 문제7.
 -- 평균 연봉이 가장 높은 직책?
   select t.title as '직책명', avg(s.salary) as '평균 연봉'
-    from salaries s, titles t
+    from salaries s, titlets t
    where s.emp_no = t.emp_no
      and s.to_date like '9999%'
      and t.to_date like '9999%'
