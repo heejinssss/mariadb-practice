@@ -41,9 +41,9 @@ public class EmaillistDao {
 			result = count == 1;
 
 		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩 실패: " + e);
+//			System.out.println("드라이버 로딩 실패: " + e);
 		} catch (SQLException e) {
-			System.out.println("error: " + e);
+//			System.out.println("error: " + e);
 		} finally {
 			try {
 				if (pstmt != null) {
@@ -53,7 +53,7 @@ public class EmaillistDao {
 					conn.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 		}
 
@@ -87,9 +87,9 @@ public class EmaillistDao {
 			result = count == 1;
 
 		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩 실패: " + e);
+//			System.out.println("드라이버 로딩 실패: " + e);
 		} catch (SQLException e) {
-			System.out.println("error: " + e);
+//			System.out.println("error: " + e);
 		} finally {
 			try {
 				if (pstmt != null) {
@@ -99,7 +99,7 @@ public class EmaillistDao {
 					conn.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 		}
 
@@ -148,9 +148,9 @@ public class EmaillistDao {
 			}
 
 		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩 실패: " + e);
+//			System.out.println("드라이버 로딩 실패: " + e);
 		} catch (SQLException e) {
-			System.out.println("error: " + e);
+//			System.out.println("error: " + e);
 		} finally {
 			try {
 				if (rs != null) {
@@ -163,7 +163,7 @@ public class EmaillistDao {
 					conn.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 		}
 
