@@ -27,10 +27,8 @@ public class AuthorDaoTest {
 	@Order(1)
 	public void testInsert() {
 		mockAuthorVo.setName("칼세이건");
-
 		authorDao.insert(mockAuthorVo);
-//		assertTrue(result);
-//		System.out.println(mockAuthorVo);
+
 		assertNotNull(mockAuthorVo.getNo());
 	}
 
