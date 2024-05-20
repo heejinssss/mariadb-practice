@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 import emaillist.dao.EmaillistDao;
 import emaillist.vo.EmaillistVo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class EmaillistApp {
 	private static EmaillistVo vo = new EmaillistVo();
