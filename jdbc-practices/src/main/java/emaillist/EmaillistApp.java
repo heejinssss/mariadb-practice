@@ -54,7 +54,6 @@ public class EmaillistApp {
 	}
 
 	private static void doDelete(String email) {
-		EmaillistDao dao = new EmaillistDao();
 		dao.deleteByEmail(email);
 		System.out.println("⋆ ˚｡⋆୨ ʚ " + vo.getLastName() + " ɞ ୧⋆ ˚｡⋆" + "님의 회원 정보가 삭제되었습니다.");
 		comebackMessage();
