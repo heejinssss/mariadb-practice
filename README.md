@@ -1,2 +1,2 @@
-# MariaDB-Practices
+# MariaDB-Practice
 A repo for studying MariaDB
