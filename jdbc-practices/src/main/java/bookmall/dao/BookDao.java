@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import bookmall.vo.BookVo;
 
 public class BookDao {
+
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
 
